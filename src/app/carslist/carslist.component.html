@@ -48,21 +48,22 @@
     </aside>
 
     <!-- Car Listings Section -->
-    <main class="car-listings">
+    <section class="listings">
         <h2>Available Cars</h2>
-        
-        <div *ngIf="!loading && !error && cars.length > 0">
-            <div class="car-listing" *ngFor="let car of cars">
-              <img [src]="car.imageUrls" alt="{{ car.carMake }} {{ car.carModel }} {{ car.manufactureYear }}">
-              <div class="details">
-                <h3>{{ car.carMake }} {{ car.carModel }} {{ car.manufactureYear }}</h3>
-                <p>Price: ${{ car.expectedPrice }}</p>
-                <p>Mileage: {{ car.kms }} miles</p>
-                <p>Location: {{ car.vehicleLocation }}</p>
-                <button (click)="viewDetails(car.id)">View Details</button>
-              </div>
+        <div class="car-grid">
+          <div *ngFor="let car of cars" class="car-card">
+            <img [src]="car.imageUrls" [alt]="car.carMake + ' ' + car.carModel + ' ' + car.manufactureYear" class="car-image">
+            <div class="car-details">
+              <h3>{{ car.carMake }} {{ car.carModel }} ({{ car.manufactureYear }})</h3>
+              <p><strong>Mileage:</strong> {{ car.kms }} miles</p>
+              <p><strong>Price:</strong> ${{ car.expectedPrice }}</p>
+              <p><strong>Location:</strong> {{ car.vehicleLocation }}</p>
+            </div>
+            <div class="car-actions">
+              <button (click)="viewDetails(car.id)">View Details</button>
             </div>
           </div>
-          
-    </main>
+        </div>
+    </section>
+    
 </div>
