@@ -4,21 +4,17 @@
     <div class="metrics">
       <div class="metric-card">
         <h3>Total Inventory</h3>
-        <p>{{ totalInventory }}</p>
+        <p>{{ analytics.totalCars }}</p>
       </div>
       <div class="metric-card">
         <h3>Total Users</h3>
-        <p>{{ totalUsers }}</p>
+        <p>{{ analytics.totalUsers }}</p>
       </div>
       <div class="metric-card">
         <h3>Cars Sold This Month</h3>
-        <p>{{ carsSoldThisMonth }}</p>
+        <p>{{ analytics.carsSoldThisMonth }}</p>
       </div>
-      <!-- <div class="metric-card">
-        <h3>Customer Satisfaction</h3>
-        <p>{{ customerSatisfaction }}</p>
-      </div>
-    </div> -->
+    </div>
   </section>
 
   <!-- Inventory Management -->
@@ -36,7 +32,7 @@
         </tr>
       </thead>
       <tbody>
-        <tr *ngFor="let car of inventory">
+        <tr *ngFor="let car of allCars">
           <td>{{ car.carModel }}</td>
           <td>{{ car.manufactureYear }}</td>
           <td>{{ car.kms }}</td>
@@ -44,9 +40,9 @@
           <td>{{ car.status }}</td>
           <td>
             <button (click)="editCar(car)">Edit</button>
-            <button (click)="markAsSold(car)">Mark as Sold</button>
-            <button (click)="deleteCar(car)">Delete</button>
-            <button (click)="approveCarListing(car)">Approve Listing</button>
+            <button (click)="markAsSold(car.id)">Mark as Sold</button>
+            <button (click)="deleteCar(car.id)">Delete</button>
+            <button *ngIf="car.status === 'Pending'" (click)="approveCar(car.id)">Approve Listing</button>
           </td>
         </tr>
       </tbody>
@@ -66,11 +62,15 @@
         </tr>
       </thead>
       <tbody>
-        <tr *ngFor="let user of users">
+        <tr *ngFor="let user of activeUsers">
           <td>{{ user.name }}</td>
           <td>{{ user.email }}</td>
           <td>{{ user.role }}</td>
-          <td><button (click)="deleteUser(user)">Delete</button></td>
+          <td>
+            <button class="role-btn" (click)="changeUserRole(user.id, 'admin')">Make Admin</button>
+            <button class="role-btn" (click)="changeUserRole(user.id, 'user')">Make User</button>
+            <button class="delete-btn" (click)="deleteUser(user.id)">Delete</button>
+          </td>
         </tr>
       </tbody>
     </table>

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { CardataService, Car } from '../cardata.service';
 import { UsersService, User } from '../users.service';
 import { CommonModule } from '@angular/common';
+import { AdminAnalyticsService } from '../admin-analytics.service';  // Assuming this service fetches analytics data
 
 @Component({
   selector: 'app-admin-dashboard',
@@ -11,44 +12,68 @@ import { CommonModule } from '@angular/common';
 })
 export class AdminDashboardComponent implements OnInit {
   
-  totalInventory = 0;
-  totalUsers = 0;
-  carsSoldThisMonth = 12;
-  revenueGenerated = '$250,000';
-  customerSatisfaction = '4.8/5';
-
+  analytics: any = {
+    totalUsers: 0,
+    totalCarsListed: 0,
+    pendingCarListings: 0,
+    carsSold: 0,
+    topSellingCar: [],
+    biddingEnabledCount: 0,
+    totalBookings: 0,
+    activeUsers: 0,
+    activeBookings: 0
+  };
   inventory: Car[] = [];
   users: User[] = [];
+  loading: boolean = false;
+  error: boolean = false;
+  cars: Car[] = [];
 
-  constructor(private cardataService: CardataService, private userService: UsersService) {}
+  constructor(
+    private cardataService: CardataService, 
+    private userService: UsersService, 
+    private adminAnalyticsService: AdminAnalyticsService  // Service to fetch analytics
+  ) {}
 
   ngOnInit(): void {
-    this.getCars();
+    this.loadCars();
     this.getAllUsers();
+    this.loadAdminAnalytics();  // Fetch the admin analytics data
   }
 
-  // Fetch all cars
-  getCars(): void {
-    this.cardataService.getCars().subscribe((cars: Car[]) => {
-      this.inventory = cars;
-      this.totalInventory = cars.length;
+  loadCars() {
+    this.loading = true;
+    this.error = false;
+
+    this.cardataService.getCars().subscribe({
+      next: (data) => {
+        this.cars = data;
+        this.loading = false;
+      },
+      error: (error) => {
+        this.error = true;
+        this.loading = false;
+      }
     });
   }
 
-  // Fetch all users
   getAllUsers(): void {
     this.userService.getAllUsers().subscribe((users: User[]) => {
       this.users = users;
-      this.totalUsers = users.length;
+      this.analytics.totalUsers = users.length;
     });
   }
 
-  // Edit car
+  loadAdminAnalytics() {
+    this.adminAnalyticsService.getAdminAnalytics().subscribe((data: any) => {
+      this.analytics = data;
+    });
+  }
+
   editCar(car: Car): void {
     console.log(`Editing car: ${car.carModel}`);
   }
 
-  // Mark car as sold
   markAsSold(car: Car): void {
     car.isSold = true;
     this.cardataService.updateCar(car.id, car).subscribe(updatedCar => {
@@ -59,29 +84,23 @@ export class AdminDashboardComponent implements OnInit {
     });
   }
 
-  // Delete car
   deleteCar(car: Car): void {
     this.cardataService.deleteCar(car.id).subscribe(() => {
       this.inventory = this.inventory.filter(c => c.id !== car.id);
     });
   }
 
-  // Approve listing
-  approveCarListing(car: Car): void {
-    car.status = 'Approved';
-    this.cardataService.updateCar(car.id, car).subscribe(updatedCar => {
-      const index = this.inventory.findIndex(c => c.id === car.id);
-      if (index !== -1) {
-        this.inventory[index] = updatedCar;
-      }
+  approveCar(carId: number) {
+    this.userService.approveCar(carId).subscribe(response => {
+      alert(response); 
+      this.loadCars(); 
     });
   }
 
-  // Delete user
   deleteUser(user: User): void {
     this.userService.deleteUser(user.id).subscribe(() => {
       this.users = this.users.filter(u => u.id !== user.id);
-      this.totalUsers = this.users.length;
+      this.analytics.totalUsers = this.users.length;
     });
   }
 }

@@ -1,7 +1,8 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
-import { catchError } from 'rxjs/operators';
+import { catchError, map, tap } from 'rxjs/operators';
+import { Car } from './cardata.service';
 
 export interface User {
   id: number;
@@ -17,6 +18,7 @@ export interface User {
 })
 export class UsersService {
   private userApiUrl = 'http://localhost:8080/api/users';
+  private carApiUrl = 'http://localhost:8082/cars';
 
   constructor(private http: HttpClient) {}
 
@@ -24,7 +26,7 @@ export class UsersService {
     return this.http.get<User[]>(this.userApiUrl).pipe(
       catchError(error => {
         console.error('Error fetching users:', error);
-        return of([]); 
+        return of([]);
       })
     );
   }
@@ -34,6 +36,35 @@ export class UsersService {
       catchError(error => {
         console.error(`Error deleting user with ID ${id}:`, error);
         return of();
+      })
+    );
+  }
+
+  getUserById(id: number): Observable<User | undefined> {
+    return this.http.get<User>(`${this.userApiUrl}/${id}`).pipe(
+      tap(data => console.log('User Data:', data)),
+      catchError(error => {
+        console.error(`Error fetching user with ID ${id}:`, error);
+        return of(undefined);
+      })
+    );
+  }
+
+  getCarsByUserId(userId: number): Observable<Car[]> {
+    return this.http.get<Car[]>(this.carApiUrl).pipe(
+      map((cars: Car[]) => cars.filter(car => car.userId === userId)),
+      catchError(error => {
+        console.error(`Error filtering cars for user ID ${userId}:`, error);
+        return of([]);
+      })
+    );
+  }
+
+  approveCar(carId: number): Observable<string> {
+    return this.http.put<string>(`${this.carApiUrl}/${carId}/approve`, {}).pipe(
+      catchError(error => {
+        console.error(`Error approving car with ID ${carId}:`, error);
+        return of('Failed to approve car');
       })
     );
   }
