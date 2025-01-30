@@ -1,8 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { CardataService, Car } from '../cardata.service';
 import { UsersService, User } from '../users.service';
+import { HttpClient } from '@angular/common/http';
+import { AdminAnalyticsService, AdminAnalyticalDto } from '../admin-analytics.service';  // Import the AdminAnalyticsService
+
 import { CommonModule } from '@angular/common';
-import { AdminAnalyticsService } from '../admin-analytics.service';  // Assuming this service fetches analytics data
+import { catchError, Observable, of } from 'rxjs';
 
 @Component({
   selector: 'app-admin-dashboard',
@@ -11,7 +14,8 @@ import { AdminAnalyticsService } from '../admin-analytics.service';  // Assuming
   styleUrls: ['./admin-dashboard.component.css']
 })
 export class AdminDashboardComponent implements OnInit {
-  
+  adminData: AdminAnalyticalDto | null = null;
+  private userApiUrl = 'http://localhost:8080/api/users';
   analytics: any = {
     totalUsers: 0,
     totalCarsListed: 0,
@@ -29,16 +33,16 @@ export class AdminDashboardComponent implements OnInit {
   error: boolean = false;
   cars: Car[] = [];
 
-  constructor(
-    private cardataService: CardataService, 
-    private userService: UsersService, 
-    private adminAnalyticsService: AdminAnalyticsService  // Service to fetch analytics
+  constructor(private http: HttpClient,
+    private cardataService: CardataService,
+    private userService: UsersService,
+    private adminAnalyticsService: AdminAnalyticsService  // Inject the AdminAnalyticsService
   ) {}
 
   ngOnInit(): void {
-    this.loadCars();
-    this.getAllUsers();
-    this.loadAdminAnalytics();  // Fetch the admin analytics data
+    this.loadCars();             // Load cars when the component initializes
+    this.getAllUsers();          // Load all users for analytics
+    this.loadAdminAnalytics();   // Fetch the admin analytics data
   }
 
   loadCars() {
@@ -64,9 +68,18 @@ export class AdminDashboardComponent implements OnInit {
     });
   }
 
+  // Fetch admin analytics data
   loadAdminAnalytics() {
-    this.adminAnalyticsService.getAdminAnalytics().subscribe((data: any) => {
-      this.analytics = data;
+    this.adminAnalyticsService.getAdminAnalytics().subscribe((data: AdminAnalyticalDto) => {
+      this.adminData = data;
+      // Update analytics object with fetched data
+      this.analytics.totalCarsListed = data.totalCarsListed;
+      this.analytics.pendingCarListings = data.pendingCarListings;
+      this.analytics.carsSold = data.carsSold;
+      this.analytics.topSellingCar = data.topSellingCar;
+      this.analytics.biddingEnabledCount = data.biddingEnabledCount;
+      this.analytics.totalBookings = data.totalBookings;
+      this.analytics.activeUsers = data.activeUsers;
     });
   }
 
@@ -92,8 +105,8 @@ export class AdminDashboardComponent implements OnInit {
 
   approveCar(carId: number) {
     this.userService.approveCar(carId).subscribe(response => {
-      alert(response); 
-      this.loadCars(); 
+      alert(response);
+      this.loadCars();  // Refresh car list after approval
     });
   }
 
@@ -102,5 +115,14 @@ export class AdminDashboardComponent implements OnInit {
       this.users = this.users.filter(u => u.id !== user.id);
       this.analytics.totalUsers = this.users.length;
     });
+  }
+  changeUserRole(userId: number, role: string): Observable<any> {
+    const url = `${this.userApiUrl}/${userId}/role?role=${role}`;
+    return this.http.put<any>(url, null).pipe(
+      catchError(error => {
+        console.error(`Error changing role for user ${userId}:`, error);
+        return of(error); // return error observable
+      })
+    );
   }
 }

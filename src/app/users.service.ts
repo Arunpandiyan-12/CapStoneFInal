@@ -17,6 +17,9 @@ export interface User {
   providedIn: 'root',
 })
 export class UsersService {
+  changeUserRole(userId: number, role: string) {
+    throw new Error('Method not implemented.');
+  }
   private userApiUrl = 'http://localhost:8080/api/users';
   private carApiUrl = 'http://localhost:8082/cars';
 

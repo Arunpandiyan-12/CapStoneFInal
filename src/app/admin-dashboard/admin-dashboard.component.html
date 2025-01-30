@@ -32,7 +32,7 @@
         </tr>
       </thead>
       <tbody>
-        <tr *ngFor="let car of allCars">
+        <tr *ngFor="let car of cars">
           <td>{{ car.carModel }}</td>
           <td>{{ car.manufactureYear }}</td>
           <td>{{ car.kms }}</td>
@@ -40,8 +40,8 @@
           <td>{{ car.status }}</td>
           <td>
             <button (click)="editCar(car)">Edit</button>
-            <button (click)="markAsSold(car.id)">Mark as Sold</button>
-            <button (click)="deleteCar(car.id)">Delete</button>
+            <button (click)="markAsSold(car)">Mark as Sold</button>
+            <button (click)="deleteCar(car)">Delete</button>
             <button *ngIf="car.status === 'Pending'" (click)="approveCar(car.id)">Approve Listing</button>
           </td>
         </tr>
@@ -62,17 +62,17 @@
         </tr>
       </thead>
       <tbody>
-        <tr *ngFor="let user of activeUsers">
+        <tr *ngFor="let user of users">
           <td>{{ user.name }}</td>
           <td>{{ user.email }}</td>
           <td>{{ user.role }}</td>
           <td>
             <button class="role-btn" (click)="changeUserRole(user.id, 'admin')">Make Admin</button>
             <button class="role-btn" (click)="changeUserRole(user.id, 'user')">Make User</button>
-            <button class="delete-btn" (click)="deleteUser(user.id)">Delete</button>
+            <button class="delete-btn" (click)="deleteUser(user)">Delete</button>
           </td>
         </tr>
       </tbody>
-    </table>
+    </table>c
   </section>
 </div>

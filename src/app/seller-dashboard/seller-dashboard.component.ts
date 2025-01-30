@@ -2,9 +2,11 @@ import { Component, OnInit } from '@angular/core';
 import { SellerDashboardService } from '../seller-dashboardservice.service';
 import { CardataService, Car } from '../cardata.service';
 import { UsersService, User } from '../users.service';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-seller-dashboard',
+  imports:[CommonModule],
   templateUrl: './seller-dashboard.component.html',
   styleUrls: ['./seller-dashboard.component.css']
 })
