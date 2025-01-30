@@ -61,13 +61,23 @@ export class AdminDashboardComponent implements OnInit {
     });
   }
 
-  getAllUsers(): void {
-    this.userService.getAllUsers().subscribe((users: User[]) => {
-      this.users = users;
-      this.analytics.totalUsers = users.length;
+  getAllUsers() {
+    this.loading = true;
+    this.error = false;
+  
+    this.userService.getAllUsers().subscribe({
+      next: (users: User[]) => {
+        this.users = users;
+        this.analytics.totalUsers = users.length;
+        this.loading = false;
+      },
+      error: (error) => {
+        this.error = true;
+        this.loading = false;
+      }
     });
   }
-
+  
   // Fetch admin analytics data
   loadAdminAnalytics() {
     this.adminAnalyticsService.getAdminAnalytics().subscribe((data: AdminAnalyticalDto) => {

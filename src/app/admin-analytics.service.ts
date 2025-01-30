@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { catchError, Observable, of } from 'rxjs';
 
 // Define the DTO interface structure in TypeScript
 export interface CarDetailDto {
@@ -31,6 +31,12 @@ export class AdminAnalyticsService {
 
   // Method to get the admin analytics data
   getAdminAnalytics(): Observable<AdminAnalyticalDto> {
-    return this.http.get<AdminAnalyticalDto>(this.apiUrl);
+    return this.http.get<AdminAnalyticalDto>(this.apiUrl).pipe(
+      catchError(error => {
+        console.error('Error fetching admin analytics:', error);
+        return of({} as AdminAnalyticalDto);  // Returning an empty object of type AdminAnalyticalDto
+      })
+    );
   }
+  
 }
