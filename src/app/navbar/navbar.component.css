@@ -1,0 +1,62 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700&display=swap');
+/* Navbar Styling */
+.navbar {
+    background-color: white;
+    padding: 20px 0;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  }
+  
+  .navbar .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  
+  /* Logo Section */
+  .logo {
+    display: flex;
+    flex-direction: column; /* Stack logo image and text vertically */
+    align-items: center; 
+    font-family: 'Poppins', Helvetica, Arial, sans-serif; 
+
+  }
+  
+  .logo-image {
+    max-height: 15px;
+    margin-bottom: 5px; /* Space between the logo and "CarHub" text */
+  }
+  
+  .logo span {
+    font-size: 1.5em;
+    font-weight: bold;
+    font-family: 'Poppins', Helvetica, Arial, sans-serif; 
+  }
+  
+  /* Navigation Links */
+  nav a {
+    margin-left: 20px;
+    text-decoration: none;
+    color: #333;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+    padding: 8px 12px;
+    border-radius: 5px;
+    transition: background-color 0.3s, color 0.3s;
+  }
+  
+  nav a.login-btn {
+    background-color: #d92128;
+    color: white;
+  }
+  
+  nav a:hover {
+    background-color: #eee;
+    color: #333;
+  }
+  
+  nav a.login-btn:hover {
+    background-color: #b0181f;
+  }
+  

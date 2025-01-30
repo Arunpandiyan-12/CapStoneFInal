@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<body>
+
+    <main>
+        <section class="hero">
+            <div class="container">
+                <div class="hero-content">
+                    <h1 class="animated-text">ALL UNDER<br>ONE ROOF!</h1>
+                    <p>"Your One-Stop Destination for<br>Buying, Selling, and Servicing Your<br>Car - Hassle-Free and All in One<br>Place!"</p>
+                    <div class="hero-buttons">
+                        <button class="register-btn" (click)="register()">Register</button>
+                        <button class="see-more-btn">See more</button>
+                    </div>
+                </div>
+                <div class="hero-image">
+                    <img src="tesla.png" class="animated-image" alt="Car Image">
+                </div>
+            </div>
+        </section>
+        <section>
+            <div class="explore-cars-container">
+                <h2>Explore Cars</h2>
+                <p>"Your One-Stop Destination for Buying, Selling, and Servicing Your Car - Hassle-Free and All in One Place!"</p>
+                <div class="cars-grid">
+                  <div class="car-card" *ngFor="let car of cars">
+                    <img [src]="car.imgPath" [alt]="car.name" />
+                    <span>{{ car.name }}</span>
+                  </div>
+                </div>
+              </div>
+              
+        </section>
+    </main>
+</body>
+</html>
+    

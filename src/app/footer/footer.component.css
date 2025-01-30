@@ -1,0 +1,78 @@
+/* style.css */
+body {
+    margin: 0;
+    font-family: sans-serif;
+    background-color: #000; /* Black background */
+    color: #fff; /* White text */
+    line-height: 1.6;
+}
+
+footer {
+    padding: 40px 0;
+}
+
+.footer-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* Responsive grid */
+    grid-gap: 30px;
+    align-items: start;
+}
+
+.footer-section {
+    text-align: left;
+}
+
+.logo {
+    font-size: 1.5em;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+.quick-links ul {
+    list-style: none;
+    padding: 0;
+}
+
+.quick-links li {
+    margin-bottom: 10px;
+}
+
+.quick-links a {
+    color: #fff;
+    text-decoration: none;
+    transition: color 0.3s; /* Smooth color transition on hover */
+}
+.quick-links a:hover{
+    color: #ddd; /* Light gray on hover */
+}
+
+.stay-connected .social-icons {
+    display: flex;
+}
+
+.social-icons a {
+    margin-right: 15px;
+    font-size: 1.5em;
+    color: #fff;
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+.social-icons a:hover{
+    color: #ddd;
+}
+
+.car-image img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+
+.copyright {
+    text-align: center;
+    padding-top: 20px;
+    border-top: 1px solid #333;
+    margin-top: 20px;
+}

@@ -1,0 +1,158 @@
+/* General Styles */
+body {
+    margin: 0;
+    font-family: 'Roboto', Arial, sans-serif; /* Using a clean, modern font similar to Tesla */
+    background-color: #f9f9f9;
+    color: #333;
+}
+
+header {
+    background-color: #004080;
+    color: white;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 30px;
+}
+
+header .logo h1 {
+    margin: 0;
+    font-size: 24px;
+}
+
+header .navbar a {
+    color: white;
+    text-decoration: none;
+    margin: 0 15px;
+    font-size: 18px;
+}
+
+header .navbar a:hover {
+    text-decoration: underline;
+}
+
+.main-container {
+    display: flex;
+    margin: 20px;
+    gap: 20px;
+}
+
+.sidebar {
+    width: 250px;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.sidebar h3 {
+    margin-top: 0;
+    font-family: 'Roboto', Arial, sans-serif;
+}
+
+.sidebar .filter-group {
+    margin-bottom: 20px;
+}
+
+.sidebar .filter-group label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+    font-family: 'Roboto', Arial, sans-serif;
+}
+
+.sidebar select,
+.sidebar input {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.sidebar button {
+    width: 100%;
+    padding: 10px;
+    background-color: #004080;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-family: 'Roboto', Arial, sans-serif;
+}
+
+.sidebar button:hover {
+    background-color: #003060;
+}
+
+.car-listings {
+    flex-grow: 1;
+}
+
+.car-listings h2 {
+    font-size: 24px;
+    color: #004080;
+    margin-bottom: 20px;
+    font-family: 'Roboto', Arial, sans-serif;
+}
+
+.car-listing {
+    display: flex;
+    gap: 30px; /* Increased gap to make room for bigger image */
+    background-color: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+    flex-wrap: wrap; /* Allow content to wrap */
+}
+
+.car-listing img {
+    width: 350px; /* Increased width */
+    height: 250px; /* Increased height */
+    border-radius: 4px;
+    object-fit: cover;
+}
+
+.car-listing .details {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 15px;
+}
+
+.car-listing .details h3 {
+    margin: 0 0 10px;
+    font-size: 22px;
+    font-family: 'Roboto', Arial, sans-serif;
+}
+
+.car-listing .details p {
+    margin: 5px 0;
+    font-family: 'Roboto', Arial, sans-serif;
+}
+
+.car-listing button {
+    margin-top: 10px;
+    padding: 10px 30px; /* Increased padding for oval shape */
+    background-color: #004080;
+    color: white;
+    border: none;
+    border-radius: 50px; /* Makes the button oval */
+    cursor: pointer;
+    font-family: 'Roboto', Arial, sans-serif;
+    align-self: flex-end; /* Aligns button to the right */
+}
+
+.car-listing button:hover {
+    background-color: #003060;
+}
+
+footer {
+    text-align: center;
+    background-color: #004080;
+    color: white;
+    padding: 15px 0;
+    margin-top: 20px;
+    font-family: 'Roboto', Arial, sans-serif;
+}

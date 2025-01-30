@@ -1,0 +1,43 @@
+<div class="dashboard-container">
+  <!-- Header Section -->
+  
+
+  <!-- Dashboard Overview -->
+  <section class="overview">
+    <h1>Welcome, Seller</h1>
+    <div class="metrics">
+      <div class="metric-card">
+        <h3>Total Listings</h3>
+        <p>{{ totalListings }}</p>
+      </div>
+      <div class="metric-card">
+        <h3>Cars Sold</h3>
+        <p>{{ carsSold }}</p>
+      </div>
+      <div class="metric-card">
+        <h3>Active Listings</h3>
+        <p>{{ activeListings }}</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Listed Cars Section -->
+  <section class="listings">
+    <h2>Your Listings</h2>
+    <div class="car-grid">
+      <div *ngFor="let car of listedCars" class="car-card">
+        <img [src]="car.image" [alt]="car.model" class="car-image">
+        <div class="car-details">
+          <h3>{{ car.model }} ({{ car.year }})</h3>
+          <p><strong>Mileage:</strong> {{ car.mileage }}</p>
+          <p><strong>Price:</strong> {{ car.price }}</p>
+          <p><strong>Status:</strong> <span [class]="car.status.toLowerCase()">{{ car.status }}</span></p>
+        </div>
+        <div class="car-actions">
+          <button (click)="markAsSold(car.id)" [disabled]="car.status === 'Sold'">Mark as Sold</button>
+          <button (click)="deleteListing(car.id)">Delete</button>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>

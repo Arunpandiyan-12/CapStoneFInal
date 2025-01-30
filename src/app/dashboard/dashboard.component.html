@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CarHub - Admin Dashboard</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+<body>
+    <div class="dashboard-container">
+        <aside class="sidebar">
+            <div class="logo">
+                <div class="car-icon" aria-hidden="true"></div>
+                CarHub
+            </div>
+            <ul class="nav-links">
+                <li class="active">
+                    <a href="#"><i class="fas fa-chart-line"></i> Dashboard</a>
+                </li>
+                <li>
+                    <a href="#"><i class="fas fa-users"></i> Sellers</a>
+                </li>
+                <li>
+                    <a href="#"><i class="fas fa-user-friends"></i> Buyers</a>
+                </li>
+                <li>
+                    <a href="#"><i class="fas fa-tools"></i> Service Providers</a>
+                </li>
+            </ul>
+            <ul class="bottom-links">
+                <li>
+                    <a href="#"><i class="fas fa-cog"></i> Settings</a>
+                </li>
+                <li>
+                    <a href="#"><i class="fas fa-sign-out-alt"></i> Logout</a>
+                </li>
+            </ul>
+        </aside>
+        <main class="main-content">
+            <header>
+                <h1>ADMIN DASHBOARD</h1>
+                <div class="header-icons">
+                    <i class="fas fa-bell" aria-hidden="true"></i>
+                    <i class="fas fa-user-circle" aria-hidden="true"></i>
+                </div>
+            </header>
+            <section class="overview-stats">
+                <div class="stat-card green">
+                    <h2>Total Service Providers</h2>
+                    <p>25</p>
+                </div>
+                <div class="stat-card yellow">
+                    <h2>Total Sellers</h2>
+                    <p>121</p>
+                </div>
+                <div class="stat-card blue">
+                    <h2>Total Buyers Requested</h2>
+                    <p>78</p>
+                </div>
+                <div class="stat-card red">
+                    <h2>Service Inquired</h2>
+                    <p>11</p>
+                </div>
+            </section>
+            <section class="revenue-stats">
+                <h2>Revenue Stats</h2>
+                <div class="chart-container">
+                    <img src="chart.png" alt="Revenue Chart showing statistics for CarHub">
+                </div>
+            </section>
+            <section class="cars-sold">
+                <div class="stat-card pink">
+                    <h2>Cars Sold</h2>
+                    <p>6</p>
+                </div>
+            </section>
+        </main>
+    </div>
+</body>
+</html>

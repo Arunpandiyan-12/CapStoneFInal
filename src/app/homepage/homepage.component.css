@@ -1,0 +1,248 @@
+/* General Reset */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700&display=swap');
+body {
+    margin: 0;
+    font-family: 'Poppins', sans-serif;
+    line-height: 1.6;
+    color: #333;
+    background-color: #ffffff; /* Light background */
+}
+
+/* Container with max-width and centering */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+/* Header styling */
+header {
+    background-color: white;
+    padding: 20px 0;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+}
+
+/* Logo styling */
+.logo {
+    font-size: 1.5em;
+    font-weight: bold;
+}
+
+/* Navigation links */
+nav a {
+    margin-left: 20px;
+    text-decoration: none;
+    color: #333;
+    font-weight: 500;
+    padding: 8px 12px; /* Added padding for better click area */
+    border-radius: 5px; /* Slight rounding */
+    transition: background-color 0.3s, color 0.3s; /* Smooth transitions */
+}
+
+/* Log in button */
+nav a.login-btn {
+    background-color: #d92128; /* Red color */
+    color: white;
+}
+
+/* Hover effects for nav links */
+nav a:hover {
+    background-color: #eee;
+    color: #333;
+}
+
+nav a.login-btn:hover {
+    background-color: #b0181f;
+}
+
+/* Main section styling */
+main {
+    padding: 40px 0;
+}
+
+/* Hero section styling */
+.hero {
+    background: linear-gradient(to right, white 50%, transparent 50%); /* Gradient background */
+}
+
+.hero .container {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start; /* Align to the start */
+}
+
+/* Hero content styling */
+.hero-content {
+    width: 45%; /* Adjust width as needed */
+    padding-right: 30px;
+}
+
+.hero h1 {
+    font-size: 3em;
+    font-weight: bold;
+    color: #d92128; /* Red color */
+    font-family: Helvetica;
+    margin-bottom: 20px;
+    line-height: 1.2;
+}
+
+.hero p {
+    font-size: 1.1em;
+    margin-bottom: 30px;
+}
+
+/* Buttons under hero section */
+.hero-buttons {
+    display: flex;
+}
+
+.hero-buttons button {
+    padding: 12px 24px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: 500;
+    transition: background-color 0.3s; /* Smooth transition */
+}
+
+.register-btn {
+    background-color: #d92128; /* Red color */
+    color: white;
+    margin-right: 15px;
+}
+
+.see-more-btn {
+    background-color: white;
+    border: 1px solid #ccc;
+    color: #333;
+}
+
+.register-btn:hover {
+    background-color: #b0181f;
+}
+
+.see-more-btn:hover {
+    background-color: #eee;
+}
+
+/* Hero image styling */
+.hero-image {
+    width: 50%; /* Adjust width as needed */
+    text-align: right;
+    background: none;
+}
+
+.hero-image img {
+    max-width: 100%;
+    height: auto;
+    background: none;
+}
+
+/* Animation */
+@keyframes slideFromLeft {
+    0% {
+        opacity: 0;
+        transform: translateX(-100%) scale(0.9);
+    }
+    50% {
+        opacity: 0.7;
+        transform: translateX(30px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateX(0) scale(1);
+    }
+}
+
+@keyframes slideFromRight {
+    0% {
+        opacity: 0;
+        transform: translateX(100%) scale(0.9);
+    }
+    50% {
+        opacity: 0.7;
+        transform: translateX(-30px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateX(0) scale(1);
+    }
+}
+
+.animated-text {
+    animation: slideFromLeft 3.0s ease-out forwards;
+}
+
+.animated-image {
+    animation: slideFromRight 2.5s ease-out forwards;
+}
+/* Cars Grid - 4 items per row */
+.cars-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr); /* Max 4 items per row */
+    gap: 20px;
+    justify-items: center;
+    padding: 20px;
+  }
+  
+  /* Individual Car Card Styling */
+  .car-card {
+    background-color: white;
+    border-radius: 10px;
+    padding: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s, box-shadow 0.3s;
+    text-align: center;
+    font-weight: 400; /* Regular weight for the car card */
+  }
+  
+  /* Image Styling for Cars */
+  .car-card img {
+    width: 100%;
+    max-width: 150px; /* Maximum width for the logo */
+    height: auto; /* Maintain aspect ratio */
+    margin-bottom: 10px;
+    transition: transform 0.3s ease;
+  }
+  
+  /* Car Name Styling - Similar to Tesla's emphasis */
+  .car-card span {
+    display: block;
+    font-size: 1rem;
+    font-weight: 600; /* Bold for car names */
+    color: #111; /* Dark color for names */
+    letter-spacing: 0.5px; /* Slight letter-spacing for better clarity */
+    text-transform: uppercase; /* Uppercase for emphasis */
+  }
+  
+  /* Hover Effects for Cards */
+  .car-card:hover {
+    transform: scale(1.05);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+  }
+  
+  .car-card:hover img {
+    transform: scale(1.1);
+  }
+  /* Container for the Explore Page */
+  .explore-cars-container {
+    text-align: center;
+    background-color: white;
+    padding: 20px 10px;
+  }
+  
+  /* Heading Style - Similar to Tesla */
+  h2 {
+    font-size: 2.0rem; /* Bigger font size for prominence */
+    font-family: 'Montserrat', sans-serif; 
+    font-weight: 600; /* Bold weight for emphasis */
+    color: #0e0a0a; /* Darker text color for headings */
+    margin-bottom: 10px;
+    letter-spacing: 1px; /* Slight letter spacing for clarity */
+    text-transform: uppercase; /* Uppercase for emphasis like Tesla */
+  }
+  
