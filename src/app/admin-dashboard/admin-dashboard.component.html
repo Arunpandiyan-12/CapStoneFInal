@@ -38,9 +38,9 @@
       <tbody>
         <tr *ngFor="let car of inventory">
           <td>{{ car.carModel }}</td>
-          <td>{{ car.year }}</td>
-          <td>{{ car.mileage }}</td>
-          <td>{{ car.price }}</td>
+          <td>{{ car.manufactureYear }}</td>
+          <td>{{ car.kms }}</td>
+          <td>{{ car.expectedPrice }}</td>
           <td>{{ car.status }}</td>
           <td>
             <button (click)="editCar(car)">Edit</button>

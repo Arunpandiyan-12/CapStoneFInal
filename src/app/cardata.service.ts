@@ -62,16 +62,48 @@ export class CardataService {
   //   );
   // }
 
-  getCarById(id: number): Observable<Car | undefined> {
-    return this.http.get<Car>(`${this.apiUrl}/${id}`).pipe(
-      tap(data => console.log('Car Data:', data)), // Debug line
-      catchError(error => {
-        console.error(`Error fetching car with ID ${id}:`, error);
-        return of(undefined);
-      })
-    );
-  }
-  
+  // getCarById(id: number): Observable<Car | undefined> {
+  //   return this.http.get<Car>(`${this.apiUrl}/${id}`).pipe(
+  //     tap(data => console.log('Car Data:', data)), // Debug line
+  //     catchError(error => {
+  //       console.error(`Error fetching car with ID ${id}:`, error);
+  //       return of(undefined);
+  //     })
+  //   );
+  // }
+  getCarById(id: number): Observable<Car> {
+    const dummyCar: Car = {
+        id: 1 ,
+        registrationNumber: "ABC123",
+        ownerName: "John Doe",
+        carMake: "Toyota",
+        carModel: "Camry",
+        variant: "XSE",
+        manufactureYear: 2020,
+        kms: 25000,
+        bodyType: "Sedan",
+        numberOfOwners: 1,
+        fuelType: "Petrol",
+        transmissionType: "Automatic",
+        vehicleLocation: "New York",
+        vin: "1HGCM82633A123456",
+        expectedPrice: 25000,
+        description: "Well-maintained car with excellent mileage.",
+        imageUrls: [
+            "https://via.placeholder.com/600x400",
+            "https://via.placeholder.com/600x400?text=Side+View",
+            "https://via.placeholder.com/600x400?text=Interior"
+        ],
+        status: "AVAILABLE",
+        userId: 1,
+        biddingAllowed: true,
+        isSold: false,
+        bookingCount: 2
+    };
+
+    return of(dummyCar);
+}
+
 
   addCar(car: Car): Observable<Car> {
     return this.http.post<Car>(this.apiUrl, car).pipe(

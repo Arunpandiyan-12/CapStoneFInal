@@ -1,6 +1,9 @@
 /* General Container Styling */
 @import url('https://fonts.googleapis.com/css2?family=Helvetica+Neue&display=swap');
-
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
+/* General Styles */
 .container {
   width: 100%;
   max-width: 1200px;
@@ -14,82 +17,107 @@
 
 /* Image Container Styling */
 /* Styles for the Image Section */
+/* Centered container */
+/* Centered container with a modern feel */
 .image-container {
   text-align: center;
   margin-bottom: 25px;
+  position: relative;
+  max-width: 900px;
+  margin: auto;
 }
 
+/* Image slider */
 .image-slider {
   width: 100%;
-  max-width: 600px; /* Adjust the size */
-  height: auto;
-  border-radius: 8px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  max-width: 900px;
+  height: 500px;
+  border-radius: 12px;
   overflow: hidden;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+  position: relative;
 }
 
 .image-slider img {
   width: 100%;
-  height: auto;
-  border-radius: 8px;
+  height: 100%;
+  border-radius: 12px;
   object-fit: cover;
+  transition: transform 0.5s ease-in-out;
 }
 
+/* Tesla-style navigation arrows */
+.arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: rgba(255, 255, 255, 0.2);
+  color: black;
+  border: none;
+  border-radius: 50%;
+  padding: 15px;
+  width: 55px;
+  height: 55px;
+  cursor: pointer;
+  font-size: 24px;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.arrow:hover {
+  background-color: rgba(255, 255, 255, 0.5);
+  transform: scale(1.1);
+}
+
+/* Positioning arrows */
+.left-arrow {
+  left: 15px;
+}
+
+.right-arrow {
+  right: 15px;
+}
 .carousel {
   position: relative;
   display: flex;
   align-items: center;
   justify-content: center;
-}
-
-.arrow {
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  background-color: rgba(0, 0, 0, 0.5);
-  color: white;
-  border: none;
-  padding: 10px;
-  cursor: pointer;
-  font-size: 18px;
-  z-index: 1;
-}
-
-.left-arrow {
-  left: 10px;
-}
-
-.right-arrow {
-  right: 10px;
-}
-
-.arrow:hover {
-  background-color: rgba(0, 0, 0, 0.7);
+  max-width: 900px;
+  margin: auto;
+  overflow: hidden;
+  border-radius: 12px;
 }
 
 /* Car Details Section */
 .car-details {
   text-align: left;
-  margin-bottom: 20px;
+  margin-bottom: 15px; /* Reduced margin */
+  font-family: 'Montserrat' ;
 }
 
 .car-title {
   font-size: 26px;
   font-weight: bold;
   color: #000;
-  margin: 10px 0;
+  margin: 5px 0; /* Reduced spacing */
 }
 
 .price {
   font-weight: bold;
   font-size: 22px;
   color: #000;
+  margin: 4px 0; /* Tightened up */
 }
 
 .location {
   font-size: 18px;
   color: #000;
+  margin: 4px 0; /* Reduced spacing */
 }
+
 /* Left Column - Basics and Features */
 .left-column {
   width: 60%;
@@ -342,7 +370,7 @@
 
 .specifications-grid {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  grid-template-columns: repeat(3, 2fr);
   gap: 16px;
   margin-top: 20px;
 }
@@ -350,12 +378,12 @@
 .specification-item {
   display: flex;
   align-items: center;
-  gap: 16px;
+  gap: 12px; /* Slightly reduced gap for compactness */
 }
 
 .icon {
-  width: 32px; /* Reduced size */
-  height: 32px;
+  width: 28px; /* Slightly reduced size for better proportion */
+  height: 28px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -363,9 +391,12 @@
 
 .icon img,
 .color-circle {
-  width: 32px; /* Match the new size */
-  height: 32px;
+  max-width: 100%; /* Ensures images scale within the container */
+  max-height: 100%;
+  width: auto;
+  height: auto;
   border-radius: 50%;
+  object-fit: contain; /* Ensures images fit without cropping */
 }
 
 
