@@ -15,12 +15,24 @@
 /* Image Container Styling */
 /* Styles for the Image Section */
 .image-container {
-  
-  max-width: 100%;
-  height:auto;
- border-radius: 8px; /* Adjust to your preferred width */
- box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  margin: 0 auto;
+  text-align: center;
+  margin-bottom: 25px;
+}
+
+.image-slider {
+  width: 100%;
+  max-width: 600px; /* Adjust the size */
+  height: auto;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+}
+
+.image-slider img {
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
+  object-fit: cover;
 }
 
 .carousel {
@@ -28,19 +40,6 @@
   display: flex;
   align-items: center;
   justify-content: center;
-}
-
-.image-slider {
-  width: 100%;
-  max-width: 600px; /* Adjust the size */
-  height: 350px; /* Adjust to maintain aspect ratio */
-}
-
-.image-slider img {
-  width: 100%;
-  height: 100%;
-  border-radius: 8px;
-  object-fit: cover;
 }
 
 .arrow {
@@ -64,11 +63,9 @@
   right: 10px;
 }
 
-/* Optional: Add hover effects to arrows */
 .arrow:hover {
   background-color: rgba(0, 0, 0, 0.7);
 }
-
 
 /* Car Details Section */
 .car-details {
@@ -93,14 +90,6 @@
   font-size: 18px;
   color: #000;
 }
-
-/* Adjusted Details Wrapper Layout */
-.details-wrapper {
-  display: flex;
-  justify-content: space-between;
-  margin-top: 20px;
-}
-
 /* Left Column - Basics and Features */
 .left-column {
   width: 60%;

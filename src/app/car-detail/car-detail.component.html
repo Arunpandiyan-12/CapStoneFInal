@@ -3,25 +3,24 @@
 
 
   <!-- Car Details -->
-    <!-- Car Details -->
-  <div class="car-details">
+
+  <!-- Image Section -->
+  <div class="image-container">
+    <div class="carousel">
+        <button class="arrow left-arrow" (click)="prevImage()">&#9664;</button>
+        <div class="image-slider">
+            <img [src]="carData.imageUrls[currentImageIndex]" alt="Car Image" />
+        </div>
+        <button class="arrow right-arrow" (click)="nextImage()">&#9654;</button>
+    </div>
+</div>
+
+<!-- Car Details -->
+<div class="car-details">
     <h1 class="car-title">{{ carData.carMake }} {{ carData.carModel }}</h1>
     <p class="price">$ {{ carData.expectedPrice }}</p>
     <p class="location">{{ carData.vehicleLocation }}</p>
-  </div>
-
-  <!-- Image Section -->
-<div class="image-container">
-  <div class="carousel">
-    <button class="arrow left-arrow" (click)="prevImage()">&#9664;</button>
-    <div class="image-slider">
-      <img [src]="carData.imageUrls[currentImageIndex]" alt="Car Image" />
-    </div>
-    <button class="arrow right-arrow" (click)="nextImage()">&#9654;</button>
-  </div>
 </div>
-
-
   <div class="details-wrapper">
     <!-- Left Side: Specifications -->
     <div class="left-column">
@@ -36,13 +35,20 @@
             </div>
           </div>
         </div>
-
+        <div class="icon-spec">
+          <div class="icon"><img src="/owners.png" alt="owners" /></div>
+          <div class="spec-details">
+            <span class="spec-label">Number of owners:</span>
+            <span class="spec-value">{{ carData.numberofOwners }}</span>
+          </div>
+        </div>
+      </div>
         <div class="specification-item">
           <div class="icon-spec">
             <div class="icon"><img src="/mileage.png" alt="Mileage" /></div>
             <div class="spec-details">
               <span class="spec-label">Mileage:</span>
-              <span class="spec-value">{{ carData.kms }} km</span>
+              <span class="spec-value">{{ carData.kms }} kms</span>
             </div>
           </div>
         </div>
@@ -52,14 +58,14 @@
             <div class="icon"><img src="/fuel.png" alt="Fuel Type" /></div>
             <div class="spec-details">
               <span class="spec-label">Fuel Type:</span>
-              <span class="spec-value">{{ carData.kms }}</span>
+              <span class="spec-value">{{ carData.fuelType }}</span>
             </div>
           </div>
         </div>
 
         <div class="specification-item">
           <div class="icon-spec">
-            <div class="icon"><img src="/icons/transmission.png" alt="Transmission" /></div>
+            <div class="icon"><img src="/transmission.png" alt="Transmission" /></div>
             <div class="spec-details">
               <span class="spec-label">Transmission:</span>
               <span class="spec-value">{{ carData.transmissionType }}</span>
@@ -69,7 +75,7 @@
 
         <div class="specification-item">
           <div class="icon-spec">
-            <div class="icon"><img src="/icons/bodytype.png" alt="Body Type" /></div>
+            <div class="icon"><img src="/bodytype.png" alt="Body Type" /></div>
             <div class="spec-details">
               <span class="spec-label">Body Type:</span>
               <span class="spec-value">{{ carData.bodyType }}</span>
