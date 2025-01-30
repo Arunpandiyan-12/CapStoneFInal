@@ -7,10 +7,33 @@ import { FormsModule } from '@angular/forms';  // <-- Import FormsModule
   standalone: true,  // <-- Use standalone: true
   imports: [FormsModule],  // <-- Add FormsModule here
   templateUrl: './sellacar.component.html',
-  styleUrls: []  // <-- Use styleUrls instead of styleUrl
+  styleUrls: ['./sellacar.component.css']  // <-- Use styleUrls instead of styleUrl
 })
 export class SellacarComponent {
-  car!:Car;
+  car: Car = {
+    registrationNumber: '',
+    carMake: '',
+    carModel: '',
+    variant: '',
+    manufactureYear: 0,
+    expectedPrice: 0,
+    kms: 0,
+    fuelType: '',
+    transmissionType: '',
+    bodyType: '',
+    vehicleLocation: '',
+    biddingAllowed: false,
+    imageUrls: [], // Empty array to hold the image URLs,
+    id: 0,
+    ownerName: '',
+    numberOfOwners: 0,
+    vin: '',
+    description: '',
+    status: '',
+    userId: 0,
+    isSold: false,
+    bookingCount: 0
+  };
 
   constructor(private carDataService: CardataService) {}
 

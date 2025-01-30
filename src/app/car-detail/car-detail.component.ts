@@ -1,11 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { CardataService, Car } from '../cardata.service';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-cardetails',
-  templateUrl: './cardetails.component.html',
-  styleUrls: ['./cardetails.component.css']
+  templateUrl: './car-detail.component.html',
+  imports:[CommonModule],
+  styleUrls: ['./car-detail.component.css']
 })
 export class CarDetailComponent implements OnInit {
   carData!: Car; // Holds the selected car details
@@ -29,8 +31,9 @@ export class CarDetailComponent implements OnInit {
       next: (data) => {
         if (data) {
           this.carData = data;
-          // Fetch estimated car price based on the car details (location, year, model)
-          this.fetchEstimatedCarPrice();
+          console.log(this.carData)
+          // // Fetch estimated car price based on the car details (location, year, model)
+          // this.fetchEstimatedCarPrice();
         } else {
           console.error('No car data found');
         }
@@ -41,29 +44,29 @@ export class CarDetailComponent implements OnInit {
     });
   }
 
-  fetchEstimatedCarPrice() {
-    // Fetch the estimated price based on location, year, and carModel
-    const { location, year, carModel } = this.carData;
-    this.carService.fetchEstimatedCarPrice(location, year, carModel).subscribe({
-      next: (estimatedPrice) => {
-        this.estimatedPrice = estimatedPrice; // Set the fetched estimated price
-      },
-      error: (error) => {
-        console.error('Error fetching estimated price:', error);
-      }
-    });
-  }
+  // fetchEstimatedCarPrice() {
+  //   // Fetch the estimated price based on location, year, and carModel
+  //   const { vehicleLocation,manufactureYear,carMake } = this.carData;
+  //   this.carService.fetchEstimatedCarPrice(vehicleLocation,manufactureYear,carMake).subscribe({
+  //     next: (estimatedPrice) => {
+  //       this.estimatedPrice = estimatedPrice; // Set the fetched estimated price
+  //     },
+  //     error: (error) => {
+  //       console.error('Error fetching estimated price:', error);
+  //     }
+  //   });
+  // }
   prevImage(): void {
     if (this.currentImageIndex > 0) {
       this.currentImageIndex--;
     } else {
-      this.currentImageIndex = this.carData.imageUrl.length - 1;
+      this.currentImageIndex = this.carData.imageUrls.length - 1;
     }
   }
 
   // Navigate to the next image
   nextImage(): void {
-    if (this.currentImageIndex < this.carData.imageUrl.length - 1) {
+    if (this.currentImageIndex < this.carData.imageUrls.length - 1) {
       this.currentImageIndex++;
     } else {
       this.currentImageIndex = 0;

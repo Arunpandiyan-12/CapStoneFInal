@@ -1,12 +1,6 @@
 /* General Container Styling */
 @import url('https://fonts.googleapis.com/css2?family=Helvetica+Neue&display=swap');
-/* General Container Styling */
-/* General Container Styling */
-/* General Container Styling */
-/* General Container Styling */
-/* General Container Styling */
-/* General Container Styling */
-/* General Container Styling */
+
 .container {
   width: 100%;
   max-width: 1200px;
@@ -21,9 +15,11 @@
 /* Image Container Styling */
 /* Styles for the Image Section */
 .image-container {
-  position: relative;
-  width: 100%;
-  max-width: 700px; /* Adjust to your preferred width */
+  
+  max-width: 100%;
+  height:auto;
+ border-radius: 8px; /* Adjust to your preferred width */
+ box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   margin: 0 auto;
 }
 

@@ -1,44 +1,37 @@
+<main>
+  <div class="form-container">
+    <!-- Car Details Section -->
+    <div class="form-section">
+      <h2>Your Car Details</h2>
+      <form (ngSubmit)="onSubmit()">
+        <input [(ngModel)]="car.registrationNumber" name="registrationNumber" placeholder="Registration No" required>
+        <input [(ngModel)]="car.carMake" name="carMake" placeholder="Make" required>
+        <input [(ngModel)]="car.carModel" name="carModel" placeholder="Model" required>
+        <input [(ngModel)]="car.variant" name="variant" placeholder="Variant" required>
+        <input [(ngModel)]="car.manufactureYear" name="manufactureYear" type="number" placeholder="Year" required>
+        <input [(ngModel)]="car.expectedPrice" name="expectedPrice" type="number" placeholder="Price" required>
+        <input [(ngModel)]="car.kms" name="kms" type="number" placeholder="Kilometers Run" required>
+        <input [(ngModel)]="car.fuelType" name="fuelType" placeholder="Fuel Type" required>
+        <input [(ngModel)]="car.transmissionType" name="transmissionType" placeholder="Transmission Type" required>
+        <input [(ngModel)]="car.bodyType" name="bodyType" placeholder="Body Type" required>
+        
+        <input [(ngModel)]="car.vehicleLocation" name="vehicleLocation" placeholder="Location" required>
+        
+        <!-- Bidding Allowed Checkbox -->
+        <label for="biddingAllowed">
+          <input [(ngModel)]="car.biddingAllowed" name="biddingAllowed" type="checkbox"> Allow Bidding
+        </label>
 
-<body>
-    <main>
-        <div class="form-container">
-            <!-- Car Details Section -->
-            <div class="form-section">
-              <h2>Your Car Details</h2>
-              <form (ngSubmit)="onSubmit()">
-                <input [(ngModel)]="car.registrationNumber" name="registrationNumber" placeholder="Registration No" required>
-                <input [(ngModel)]="car.carMake" name="carMake" placeholder="Make" required>
-                <input [(ngModel)]="car.carModel" name="carModel" placeholder="Model" required>
-                <input [(ngModel)]="car.variant" name="variant" placeholder="Variant" required>
-                <input [(ngModel)]="car.year" name="year" type="number" placeholder="Year" required>
-                <input [(ngModel)]="car.price" name="price" type="number" placeholder="Price" required>
-                <input [(ngModel)]="car.mileage" name="mileage" type="number" placeholder="Kilometers Run" required>
-                <input [(ngModel)]="car.fuelType" name="fuelType" placeholder="Fuel Type" required>
-                <input [(ngModel)]="car.transmission" name="transmission" placeholder="Transmission Type" required>
-                <input [(ngModel)]="car.bodyType" name="bodyType" placeholder="Body Type" required>
-                <input [(ngModel)]="car.engineCapacity" name="engineCapacity" type="number" placeholder="Engine Capacity" required>
-                <input [(ngModel)]="car.fuelEfficiency" name="fuelEfficiency" type="number" placeholder="Fuel Efficiency" required>
-                <input [(ngModel)]="car.emissions" name="emissions" type="number" placeholder="Emissions" required>
-                <input [(ngModel)]="car.location" name="location" placeholder="Location" required>
-                
-                <!-- Bidding Allowed Checkbox -->
-                <label for="biddingAllowed">
-                  <input [(ngModel)]="car.biddingAllowed" name="biddingAllowed" type="checkbox"> Allow Bidding
-                </label>
-          
-                <div class="upload-section">
-                  <label for="image-upload">Upload Car Images (Minimum 5 images)</label>
-                  <input [(ngModel)]="car.imageUrl" name="imageUrl" type="file" multiple accept="image/*" required>
-                </div>
-          
-                <button type="submit">Submit</button>
-              </form>
-            </div>
-          </div>
-          
+        <div class="upload-section">
+          <label for="image-upload">Upload Car Images (Minimum 5 images)</label>
+          <input [(ngModel)]="car.imageUrls" name="imageUrls" type="file" multiple accept="image/*" required>
+        </div>
 
-        <!-- Submit Button -->
         <button type="submit" class="submit-button" form="user-details-form">Request Admin Approval</button>
-    </main>
-    
-</body>
+      </form>
+    </div>
+  </div>
+
+  <!-- Submit Button -->
+  
+</main>

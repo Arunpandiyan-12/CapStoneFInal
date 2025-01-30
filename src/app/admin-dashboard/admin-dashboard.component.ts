@@ -23,13 +23,13 @@ export class AdminDashboardComponent implements OnInit {
   constructor(private cardataService: CardataService, private userService: UsersService) {}
 
   ngOnInit(): void {
-    this.getAllCars();
+    this.getCars();
     this.getAllUsers();
   }
 
   // Fetch all cars
-  getAllCars(): void {
-    this.cardataService.getAllCars().subscribe((cars: Car[]) => {
+  getCars(): void {
+    this.cardataService.getCars().subscribe((cars: Car[]) => {
       this.inventory = cars;
       this.totalInventory = cars.length;
     });

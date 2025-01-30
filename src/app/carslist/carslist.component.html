@@ -53,12 +53,12 @@
         
         <div *ngIf="!loading && !error && cars.length > 0">
             <div class="car-listing" *ngFor="let car of cars">
-              <img [src]="car.imageUrl" alt="{{ car.carMake }} {{ car.carModel }} {{ car.year }}">
+              <img [src]="car.imageUrls" alt="{{ car.carMake }} {{ car.carModel }} {{ car.manufactureYear }}">
               <div class="details">
-                <h3>{{ car.carMake }} {{ car.carModel }} {{ car.year }}</h3>
-                <p>Price: ${{ car.price }}</p>
-                <p>Mileage: {{ car.mileage }} miles</p>
-                <p>Location: {{ car.location }}</p>
+                <h3>{{ car.carMake }} {{ car.carModel }} {{ car.manufactureYear }}</h3>
+                <p>Price: ${{ car.expectedPrice }}</p>
+                <p>Mileage: {{ car.kms }} miles</p>
+                <p>Location: {{ car.vehicleLocation }}</p>
                 <button (click)="viewDetails(car.id)">View Details</button>
               </div>
             </div>
