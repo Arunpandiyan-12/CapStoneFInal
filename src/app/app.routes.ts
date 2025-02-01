@@ -1,15 +1,14 @@
 import { provideRouter, Routes } from '@angular/router';
-import { HomepageComponent } from './homepage/homepage.component';
-import { RegistrationComponent } from './registration/registration.component';
-import { SigninComponent } from './signin/signin.component';
-import { SellacarComponent } from './sellacar/sellacar.component';
-import { DashboardComponent } from './dashboard/dashboard.component';
-import { NavbarComponent } from './navbar/navbar.component';
-import { FooterComponent } from './footer/footer.component';
-import { CarslistComponent } from './carslist/carslist.component';
-import { CarDetailComponent } from './car-detail/car-detail.component';
-import { SellerDashboardComponent } from './seller-dashboard/seller-dashboard.component';
-import { AdminDashboardComponent } from './admin-dashboard/admin-dashboard.component';
+import { HomepageComponent } from './Pages/homepage/homepage.component';
+import { RegistrationComponent } from './Pages/registration/registration.component';
+import { SigninComponent } from './Pages/signin/signin.component';
+import { SellacarComponent } from './Pages/sellacar/sellacar.component';
+import { NavbarComponent } from './Components/navbar/navbar.component';
+import { FooterComponent } from './Components/footer/footer.component';
+import { CarslistComponent } from './Pages/carslist/carslist.component';
+import { CarDetailComponent } from './Pages/car-detail/car-detail.component';
+import { SellerDashboardComponent } from './Pages/seller-dashboard/seller-dashboard.component';
+import { AdminDashboardComponent } from './Pages/admin-dashboard/admin-dashboard.component';
 
 export const routes: Routes = [
     { path: '', redirectTo: 'homepage', pathMatch: 'full' },
@@ -17,7 +16,6 @@ export const routes: Routes = [
     {path:'registration', component: RegistrationComponent},
     {path:'signin', component: SigninComponent},
     {path:'sellacar', component: SellacarComponent},
-    {path:'dashboard', component:DashboardComponent},
     {path:'carslist', component:CarslistComponent},
     { path: 'car-details/:id', component: CarDetailComponent },
     {path:'sellerdashboard',component:SellerDashboardComponent},

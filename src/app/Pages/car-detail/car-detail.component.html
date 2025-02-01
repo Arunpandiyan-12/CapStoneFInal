@@ -1,0 +1,152 @@
+<div class="container">
+  <!-- Image Section Centered -->
+  <div class="image-container">
+    <div class="carousel">
+      <button class="arrow left-arrow" (click)="prevImage()">&#9664;</button>
+      <div class="image-slider">
+        <img [src]="carData.imageUrls[currentImageIndex]" alt="Car Image" />
+      </div>
+      <button class="arrow right-arrow" (click)="nextImage()">&#9654;</button>
+    </div>
+  </div>
+
+  <!-- Car Title Centered -->
+  <div class="car-title-container">
+    <h1 class="car-title">{{ carData.carMake }} {{ carData.carModel }}</h1>
+    <p class="price">$ {{ carData.expectedPrice }}</p>
+    <p class="location">{{ carData.vehicleLocation }}</p>
+  </div>
+
+  <!-- Specifications & Deal Gauge in Two Columns -->
+  <div class="details-wrapper">
+    <div class="left-column">
+      <div class="specifications-grid">
+        <div class="specification-item">
+          <div class="icon-spec">
+            <div class="icon"><img src="/calendar.png" alt="Year" /></div>
+            <div class="spec-details">
+              <span class="spec-label">Year:</span>
+              <span class="spec-value">{{ carData.manufactureYear }}</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="specification-item">
+          <div class="icon-spec">
+            <div class="icon"><img src="/owners.png" alt="Owners" /></div>
+            <div class="spec-details">
+              <span class="spec-label">Number of owners:</span>
+              <span class="spec-value">{{ carData.numberOfOwners }}</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="specification-item">
+          <div class="icon-spec">
+            <div class="icon"><img src="/mileage.png" alt="Mileage" /></div>
+            <div class="spec-details">
+              <span class="spec-label">Mileage:</span>
+              <span class="spec-value">{{ carData.kms }} kms</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="specification-item">
+          <div class="icon-spec">
+            <div class="icon"><img src="/fuel.png" alt="Fuel Type" /></div>
+            <div class="spec-details">
+              <span class="spec-label">Fuel Type:</span>
+              <span class="spec-value">{{ carData.fuelType }}</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="specification-item">
+          <div class="icon-spec">
+            <div class="icon"><img src="/transmission.png" alt="Transmission" /></div>
+            <div class="spec-details">
+              <span class="spec-label">Transmission:</span>
+              <span class="spec-value">{{ carData.transmissionType }}</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="specification-item">
+          <div class="icon-spec">
+            <div class="icon"><img src="/body.png" alt="Body Type" /></div>
+            <div class="spec-details">
+              <span class="spec-label">Body Type:</span>
+              <span class="spec-value">{{ carData.bodyType }}</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Right Column: Deal Gauge -->
+    <div class="right-column">
+      <div class="deal-gauge">
+        <h2>Deal Gauge™</h2>
+        <p class="powered-by">Powered by Cars.com</p>
+        <p>
+          We compared this car with similar vehicles based on price, mileage,
+          features, condition, and several other factors.
+        </p>
+        <div class="price-display">
+          <div class="icon">🚗</div>
+          <div>
+            <h3>{{ estimatedPrice | currency }}</h3>
+            <p>
+              {{ dealType }} ${{ priceDifference }} {{ dealType === 'Good Deal' ? 'under' : 'over' }}
+            </p>
+          </div>
+        </div>
+        <div class="gauge">
+          <div class="gauge-bar">
+            <div
+              class="indicator actual-price"
+              [style.left.%]="((carData.expectedPrice - minPrice) / (maxPrice - minPrice)) * 100"
+            ></div>
+            <div
+              class="indicator estimated-price"
+              [style.left.%]="((estimatedPriceLong - minPrice) / (maxPrice - minPrice)) * 100"
+            ></div>
+          </div>
+          <div class="gauge-labels">
+            <span>{{ minPrice | currency }}</span>
+            <span>{{ estimatedPrice | currency }}</span>
+            <span>{{ maxPrice | currency }}</span>
+          </div>
+        </div>
+
+        <!-- Labels for Actual and Estimated Prices -->
+        <div class="price-labels">
+          <span><strong>Actual Price:</strong> {{ carData.expectedPrice | currency }}</span>
+          <span><strong>Estimated Price:</strong> {{ estimatedPriceLong | currency }}</span>
+        </div>
+      </div>
+
+      <!-- Bid Section Below Deal Gauge -->
+      <div class="slider-container">
+        <h3>Set Bid</h3>
+        <div class="slider-wrapper">
+          <input
+            type="range"
+            [(ngModel)]="bidPrice"
+            min="1000"
+            max="100000"
+            step="1000"
+            (input)="onBidChange()"
+            class="bid-slider"
+          />
+          <div class="slider-value">${{ bidPrice }}</div>
+        </div>
+        <div class="message-form">
+          <label for="message">Message</label>
+          <textarea [(ngModel)]="message" placeholder="Hi, I would like to offer ${{ bidPrice }} for this vehicle"></textarea>
+          <button (click)="sendBid()" class="submit-button">Send Message</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
